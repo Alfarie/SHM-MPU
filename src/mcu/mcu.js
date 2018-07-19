@@ -67,7 +67,6 @@ function SetSerialPort(serial) {
     write = serial.write;
 
     serial.onConnect.subscribe(data => {
-
         console.log("[Info] Mcu checking status...");
         write.next("{checkstatus}");
     });
@@ -77,7 +76,7 @@ function SetSerialPort(serial) {
         console.log('[Info] Requesting data from mcu: cleared');
         RequestRealTimeData(false);
     })
-
+    
     read.subscribe(data => {
         CommandVerify(data);
     });
